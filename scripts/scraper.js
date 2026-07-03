@@ -6,16 +6,18 @@ const TARGET_URL = "https://keyspinner.b3na.com/all_products";
 
 async function startScraping() {
 	try {
-		console.log("⏳ جاري تشغيل متصفح مخفي والانتظار لتحميل الجافاسكريبت...");
+		console.log(
+			"⏳ Launching a headless browser and waiting for JavaScript to load...",
+		);
 
 		const browser = await puppeteer.launch({ headless: true });
 		const page = await browser.newPage();
 
-		// تشغيل الموقع
+		// turn on the website
 		await page.goto(TARGET_URL, { waitUntil: "networkidle2", timeout: 60000 });
 
 		console.log(
-			"📜 جاري التمرير لأسفل الصفحة تلقائياً لتحميل كافة المنتجات (144 منتج)...",
+			" 📜 Automatically scrolling down the page to load all 144 products...",
 		);
 
 		// 🛠️ دالة التمرير اللانهائي الذكية:
@@ -82,7 +84,7 @@ async function startScraping() {
 
 		await browser.close();
 
-		// حفظ البيانات
+		// Data Saving
 		if (productsList.length > 0) {
 			const outputFilePath = path.join(__dirname, "..", "app", "products.json");
 			fs.writeFileSync(
@@ -91,18 +93,13 @@ async function startScraping() {
 				"utf-8",
 			);
 
-			console.log(
-				`🎉 نجاح ساحق ومكتمل! تم التمرير بنجاح وسحب ${productsList.length} منتج.`,
-			);
+			console.log(`🎉 Done It scraped ${productsList.length} product.`);
 			console.log(`📂 تفقد الملف المحدث الآن: app/products.json`);
 		} else {
-			console.log("⚠️ لم يتم العثور على كلاسات المنتجات.");
+			console.log("⚠️ It dose not found the product's classes ");
 		}
 	} catch (error) {
-		console.error(
-			"❌ حصلت مشكلة أثناء محاكاة المتصفح والتمرير:",
-			error.message,
-		);
+		console.error("❌ A Problem happened during browsing:", error.message);
 	}
 }
 
