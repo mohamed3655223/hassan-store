@@ -1,8 +1,8 @@
-import Navbar from "./components/NavBar";
+import Categorise from "./components/Categorise";
 export default function Home() {
 	return (
 		<div>
-			<Navbar />
+			<Categorise />
 		</div>
 	);
 }

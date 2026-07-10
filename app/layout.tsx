@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/NavBar";
 
 const cairo = Cairo({
 	subsets: ["arabic"],
@@ -20,7 +21,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ar" dir="rtl" data-theme="emerald">
-			<body className={`min-h-full flex flex-col ${cairo.className}`}>
+			<body className={`min-h-screen flex flex-col ${cairo.className}`}>
+				<Navbar />
 				{children}
 			</body>
 		</html>
