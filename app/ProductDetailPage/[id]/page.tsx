@@ -26,12 +26,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
 						/>
 					</div>
 
-					<div className="flex flex-col justify-center">
+					<div className="flex flex-col justify-center items-center">
 						<h1 className="text-3xl font-black mb-4">{product.title}</h1>
 						<p className="text-2xl font-bold text-emerald-400 mb-6">
 							{product.price} جنيه
 						</p>
-						<button className="bg-emerald-500 text-black font-bold py-4 rounded-xl hover:bg-emerald-400 transition-all cursor-pointer">
+						<button className="bg-emerald-500 text-black
+						font-bold py-4 px-10 sm:px-20 rounded-xl hover:bg-emerald-400
+						transition-all cursor-pointer">
 							إضافة إلى السلة
 						</button>
 					</div>
