@@ -5,6 +5,7 @@ import {
 	DisclosurePanel,
 } from "@headlessui/react";
 import Link from "next/link";
+import logo from "../Assets/1764454192.webp";
 import { usePathname } from "next/navigation";
 const navigation = [
 	{ name: "الرئيسية", href: "/" },
@@ -40,7 +41,7 @@ export default function NavBar() {
 						</DisclosureButton>
 					</div>
 					<Link href="/" className="flex items-center">
-						<img alt="img" src="/1764454192.webp" className="h-10 w-10" />
+						<img alt="img" src={logo.src} className="h-10 w-10" />
 					</Link>
 					{/* Parent For Tabs (DeskTop)*/}
 					<div className="hidden sm:flex flex-1 items-center justify-center">
@@ -89,8 +90,7 @@ export default function NavBar() {
 				</div>
 			</div>
 			{/* Mobile Tabs Menue */}
-			<DisclosurePanel
-				className="sm:hidden bg-gray-700 border-b border-gray-600 absolute left-0 right-0 z-50 shadow-xl">
+			<DisclosurePanel className="sm:hidden bg-gray-700 border-b border-gray-600 absolute left-0 right-0 z-50 shadow-xl">
 				<div className="space-y-1 px-4 pt-2 pb-4 flex flex-col items-center">
 					{navigation.map((item) => {
 						const isCurrent = pathName === item.href;
