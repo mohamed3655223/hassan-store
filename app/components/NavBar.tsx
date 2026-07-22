@@ -20,7 +20,9 @@ function classNames(...classes: (string | boolean | undefined | null)[]) {
 export default function NavBar() {
 	const pathName = usePathname();
 	return (
-		<Disclosure as="nav" className="bg-gray-800 relative">
+		<Disclosure
+			as="nav"
+			className="bg-gray-800 fixed top-0 left-0 right-0 z-50">
 			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 				<div className=" flex h-18 justify-between items-center ">
 					{/* Tabs Button in Mobile Burger Icon */}

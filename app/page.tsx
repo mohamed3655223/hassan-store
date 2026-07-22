@@ -5,8 +5,8 @@ import ContactUs from "./components/ContactUs";
 export default function Home() {
 	return (
 		<div>
-			<LatestWorks />
 			<Categorise />
+			<LatestWorks />
 			<Reviews />
 			<ContactUs />
 		</div>

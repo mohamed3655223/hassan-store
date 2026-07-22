@@ -6,7 +6,6 @@ interface PageProps {
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {
-    // 1. ننتظر الـ id القادم من رابط المتصفح
     const resolvedParams = await params;
     const productId = resolvedParams.id;
 
@@ -27,7 +26,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 					</div>
 
 					<div className="flex flex-col justify-center items-center">
-						<h1 className="text-3xl font-black mb-4">{product.title}</h1>
+						<h1 className="leading-12 text-3xl font-black mb-4">{product.title}</h1>
 						<p className="text-2xl font-bold text-emerald-400 mb-6">
 							{product.price} جنيه
 						</p>

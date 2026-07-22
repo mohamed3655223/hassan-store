@@ -18,33 +18,33 @@ export default function ContactUs() {
 				</div>
 				{/* Social Media */}
 				<div className="flex justify-center space-x-9">
-					<div>
+					<div className="hover:-translate-y-3 transition-transform duration-300">
 						<Link
 							target="_blank"
 							href="https://www.facebook.com/hsn.alshrwydy?rdid=6WgETbixg8BNOQh9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1GXAaAh77A%2F#">
 							<img src={facebookImg.src} alt="facebook" />
 						</Link>
 					</div>
-					<div>
+					<div className="hover:-translate-y-3 transition-transform duration-300">
 						<Link
 							target="_blank"
 							href="https://www.youtube.com/@hassanyousf-3d_printer">
 							<img src={youtubeImg.src} alt="youtube" />
 						</Link>
 					</div>
-					<div>
+					<div className="hover:-translate-y-3 transition-transform duration-300">
 						<Link
 							target="_blank"
 							href="https://www.tiktok.com/@hassan.yousf_3d?_r=1">
 							<img src={tiktokImg.src} alt="tiktok" />
 						</Link>
 					</div>
-					<div>
+					<div className="hover:-translate-y-3 transition-transform duration-300">
 						<Link target="_blank" href="https://wa.me/+201060852353">
 							<img src={whatSappImg.src} alt="whatsapp" />
 						</Link>
 					</div>
-					<div>
+					<div className="hover:-translate-y-3 transition-transform duration-300">
 						<Link target="_blank" href="https://www.instagram.com/xhassanyousf">
 							<img src={instgramImg.src} alt="instgram" />
 						</Link>
