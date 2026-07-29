@@ -1,7 +1,8 @@
-"use client"
-import products from "../products.json"
-import Link from "next/link"
+"use client";
+import products from "../products.json";
+import Link from "next/link";
 import { useState } from "react";
+import { useCart } from "../Contexts/cartContext";
 interface productType {
 	id: number;
 	title: string;
@@ -9,7 +10,8 @@ interface productType {
 	image: string;
 }
 export default function ProductsPage() {
-	const [productName , setProductName] = useState("")
+	const { addToCart , cartItems  } = useCart();
+	const [productName, setProductName] = useState("");
 	const filteredProducts =
 		productName.trim() === ""
 			? products
@@ -33,6 +35,7 @@ export default function ProductsPage() {
 			{/* The Products */}
 			<div className="grid grid-cols-2 lg:grid-cols-4 sm:grid-cols-3 gap-8 mt-9">
 				{filteredProducts.map((product: productType) => {
+					const isInCart = cartItems.some(item => item.id === product.id)
 					return (
 						<div
 							key={product.id}
@@ -46,14 +49,18 @@ export default function ProductsPage() {
 									className="w-auto sm:w-full lg:w-full"
 								/>
 								<div className="p-2 sm:p-4">
-									<h2 className="overflow-hidden truncate font-bold">{product.title}</h2>
+									<h2 className="overflow-hidden truncate font-bold">
+										{product.title}
+									</h2>
 									<h3 className="mt-2">{`السعر : ${product.price} جنيه`}</h3>
 								</div>
 							</Link>
 							<div className="flex justify-center mb-1">
-								<button className="bg-gray-600 text-amber-50 p-2 sm:p-3 cursor-pointer
-								rounded-lg hover:bg-emerald-500">
-									اضف الى سلة المشتريات
+								<button
+									className={`${isInCart ? "bg-green-600" : "bg-gray-600"} text-amber-50 p-2 sm:p-3 cursor-pointer
+									rounded-lg ${isInCart ? "" : "hover:bg-emerald-500"}`}
+									onClick={() => addToCart(product.id)}>
+									{isInCart ? "✔ موجود في السلة" : "أضف إلى سلة المشتريات"}{" "}
 								</button>
 							</div>
 						</div>
@@ -64,5 +71,3 @@ export default function ProductsPage() {
 		</div>
 	);
 }
-
-

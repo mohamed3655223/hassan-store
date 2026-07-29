@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/NavBar";
+import CartProvider from "./Contexts/cartContext";
 
 const cairo = Cairo({
 	subsets: ["arabic"],
@@ -22,8 +23,10 @@ export default function RootLayout({
 	return (
 		<html lang="ar" dir="rtl" data-theme="emerald">
 			<body className={`min-h-screen flex flex-col ${cairo.className}`}>
-				<Navbar />
-				{children}
+				<CartProvider>
+					<Navbar />
+					{children}
+				</CartProvider>
 			</body>
 		</html>
 	);
