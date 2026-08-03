@@ -4,7 +4,8 @@ import { useCart } from "../Contexts/cartContext";
 import Link from "next/link";
 
 export default function Cart() {
-	const { cartItems, incrementQuantity, decrementQuantity , totalPrice } = useCart();
+	const { cartItems, incrementQuantity, decrementQuantity, totalPrice } =
+		useCart();
 
 	return (
 		<div className="bg-gray-600 mt-18 w-full text-white">
@@ -79,10 +80,16 @@ export default function Cart() {
 							</div>
 						</div>
 					))}
-					<div className="flex items-center justify-center p-10 bg-cyan-950">
-						<h1
-						className="font-bold"
-						> السعر الاجمالى : {totalPrice}</h1>
+					<div className="flex flex-col items-center justify-center p-10">
+						<h1 className="mb-8 text-2xl font-bold">
+							الإجمالي&nbsp;:&nbsp;
+							<span className="text-emerald-300">{totalPrice} جنيه</span>
+						</h1>
+						<Link
+							href="/Checkout"
+							className="cursor-pointer font-bold bg-emerald-500 p-4 hover:bg-emerald-950 rounded-md">
+							إتمام الشراء
+						</Link>
 					</div>
 				</>
 			)}

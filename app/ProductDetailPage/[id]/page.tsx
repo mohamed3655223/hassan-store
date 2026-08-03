@@ -1,11 +1,15 @@
+"use client"
 import productsData from "../../products.json";
 import GlobalNotFound from "@/app/Not-Found/page";
+import { useCart } from "../../Contexts/cartContext";
+
 
 interface PageProps {
     params: Promise<{ id: string }>;
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {
+	const {addToCart} = useCart()
     const resolvedParams = await params;
     const productId = resolvedParams.id;
 
@@ -32,7 +36,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
 						</p>
 						<button className="bg-emerald-500 text-black
 						font-bold py-4 px-10 sm:px-20 rounded-xl hover:bg-emerald-400
-						transition-all cursor-pointer">
+						transition-all cursor-pointer"
+						onClick={() => addToCart(product.id)}
+						>
 							إضافة إلى السلة
 						</button>
 					</div>
