@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import productsData from "../products.json";
 import Link from "next/link";
+import type { Product } from "@/app/types/product";
 
 export default function LatestWorks() {
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -38,14 +39,14 @@ export default function LatestWorks() {
 					<div
 						className="flex transition-transform duration-700 ease-in-out"
 						style={{ transform: `translateX(${currentIndex * 100}%)` }}>
-						{latestWorksImgs.map((product: any) => (
+						{latestWorksImgs.map((product: Product) => (
 							<div
 								key={product.id}
 								className="w-full shrink-0 relative aspect-5/3 sm:aspect-6/4">
 								<Link href={`/ProductDetailPage/${product.id}`}>
 									<img
 										src={product.image}
-										alt={product.name}
+										alt={product.title}
 										className="w-full h-full object-cover rounded-xl"
 									/>
 									<div className="absolute inset-0 bg-gradient-t from-black/80 via-black/20 to-transparent flex items-end justify-right p-6 sm:p-10 text-right">

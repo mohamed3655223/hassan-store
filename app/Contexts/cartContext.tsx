@@ -1,21 +1,8 @@
 "use client";
 import { useState, useMemo, useContext } from "react";
 import AllProducts from "../products.json";
-
+import type { Product, CartItem } from "@/app/types/product";
 import { createContext } from "react";
-
-interface Product {
-	id: number;
-	title: string;
-	price: number;
-	image: string;
-	link: string;
-	old_price?: number;
-}
-
-interface CartItem extends Product {
-	quantity: number;
-}
 
 interface CartContextType {
 	cartItems: CartItem[];

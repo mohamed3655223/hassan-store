@@ -3,19 +3,14 @@ import products from "../products.json";
 import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "../Contexts/cartContext";
-interface productType {
-	id: number;
-	title: string;
-	price: number;
-	image: string;
-}
+import type { Product } from "@/app/types/product";
 export default function ProductsPage() {
 	const { addToCart , cartItems  } = useCart();
 	const [productName, setProductName] = useState("");
 	const filteredProducts =
 		productName.trim() === ""
 			? products
-			: products.filter((product: productType) =>
+			: products.filter((product: Product) =>
 					product.title.includes(productName),
 				);
 	return (
@@ -34,7 +29,7 @@ export default function ProductsPage() {
 			{/* ==Search Bar== */}
 			{/* The Products */}
 			<div className="grid grid-cols-2 lg:grid-cols-4 sm:grid-cols-3 gap-8 mt-9">
-				{filteredProducts.map((product: productType) => {
+				{filteredProducts.map((product: Product) => {
 					const isInCart = cartItems.some(item => item.id === product.id)
 					return (
 						<div
@@ -60,7 +55,7 @@ export default function ProductsPage() {
 									className={`${isInCart ? "bg-green-600" : "bg-gray-600"} text-amber-50 p-2 sm:p-3 cursor-pointer
 									rounded-lg ${isInCart ? "" : "hover:bg-emerald-500"}`}
 									onClick={() => addToCart(product.id)}>
-									{isInCart ? "✔ موجود في السلة" : "أضف إلى سلة المشتريات"}{" "}
+									{isInCart ? "✔ موجود في السلة" : "أضف إلى سلة المشتريات"}
 								</button>
 							</div>
 						</div>
