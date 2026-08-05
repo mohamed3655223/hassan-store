@@ -2,22 +2,31 @@
 import Allproducts from "../products.json";
 import { useCart } from "../Contexts/cartContext";
 import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function CategoryProducts() {
 	const { addToCart, cartItems } = useCart();
 
 	const searchParams = useSearchParams();
+
 	const selectedCategory = searchParams.get("category");
-	const filterdProducts = Allproducts.filter(
-		(product) => product.category === selectedCategory,
+
+	if (!selectedCategory) {
+		return <div>No category selected.</div>;
+	}
+
+	const normalizedCategory = selectedCategory.trim().toLowerCase();
+
+	const filteredProducts = Allproducts.filter(
+		(product) => product.category.trim().toLowerCase() === normalizedCategory,
 	);
 	const cartIds = new Set(cartItems.map((item) => item.id));
 
 	return (
 		<div className="p-6 bg-[#070d0a] mt-18 min-h-screen">
 			<div className="grid grid-cols-2 lg:grid-cols-4 sm:grid-cols-3 gap-8 ">
-				{filterdProducts.map((product) => {
+				{filteredProducts.map((product) => {
 					const isInCart = cartIds.has(product.id);
 					return (
 						<div
@@ -26,8 +35,10 @@ export default function CategoryProducts() {
 							border-3 border-emerald-100 hover:border-emerald-500 transition-colors
 							duration-200">
 							<Link href={`/ProductDetailPage/${product.id}`}>
-								<img
+								<Image
 									src={product.image}
+									width={300}
+									height={300}
 									alt="product-image"
 									className="w-auto sm:w-full lg:w-full"
 								/>

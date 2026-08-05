@@ -1,6 +1,7 @@
 "use client";
 import products from "../products.json";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "../Contexts/cartContext";
 export default function Discounts() {
 	const { addToCart, cartItems } = useCart();
@@ -20,9 +21,11 @@ export default function Discounts() {
 							border-3 border-emerald-100 hover:border-emerald-500 transition-colors
 							duration-200">
 							<Link href={`/ProductDetailPage/${product.id}`}>
-								<img
+								<Image
 									src={product.image}
 									alt={product.title}
+									width={300}
+									height={300}
 									className="w-auto sm:w-full lg:w-full"
 								/>
 								<div className="p-2 sm:p-4">

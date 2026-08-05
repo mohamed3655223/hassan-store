@@ -2,6 +2,8 @@ import productsData from "../../products.json";
 import GlobalNotFound from "@/app/Not-Found/page";
 import AddToCartButton from "@/app/components/AddToCartButton";
 import type { Product } from "@/app/types/product";
+import Image from "next/image";
+
 
 interface PageProps {
 	params: Promise<{ id: string }>;
@@ -20,9 +22,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
 		<main className="min-h-screen bg-[#070d0a] text-white p-8 sm:p-12 text-right">
 			<div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 pt-12">
 				<div className="relative aspect-square w-full border border-gray-800 rounded-2xl overflow-hidden bg-gray-900/40">
-					<img
+					<Image
 						src={product.image}
 						alt={product.title}
+						width={300}
+						height={300}
 						className="w-full h-full object-cover"
 					/>
 				</div>

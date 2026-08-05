@@ -1,6 +1,7 @@
 "use client";
 import products from "../products.json";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { useCart } from "../Contexts/cartContext";
 export default function ProductsPage() {
@@ -39,9 +40,11 @@ export default function ProductsPage() {
 							border-3 border-emerald-100 hover:border-emerald-500 transition-colors
 							duration-200">
 							<Link href={`/ProductDetailPage/${product.id}`}>
-								<img
+								<Image
 									src={product.image}
 									alt="product-image"
+									width={300}
+									height={300}
 									className="w-auto sm:w-full lg:w-full"
 								/>
 								<div className="p-2 sm:p-4">
