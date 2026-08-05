@@ -1,36 +1,23 @@
 "use client";
-import products from "../products.json";
-import Link from "next/link";
-import { useState } from "react";
+import Allproducts from "../products.json";
 import { useCart } from "../Contexts/cartContext";
-export default function ProductsPage() {
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+
+export default function CategoryProducts() {
 	const { addToCart, cartItems } = useCart();
-	const [productName, setProductName] = useState("");
-	const filteredProducts =
-		productName.trim() === ""
-			? products
-			: products.filter((product) =>
-					product.title.includes(productName),
-				);
+
+	const searchParams = useSearchParams();
+	const selectedCategory = searchParams.get("category");
+	const filterdProducts = Allproducts.filter(
+		(product) => product.category === selectedCategory,
+	);
 	const cartIds = new Set(cartItems.map((item) => item.id));
 
 	return (
-		<div className="p-6 bg-[#070d0a]">
-			{/* Search Bar */}
-			<div className="flex justify-center mt-16">
-				<input
-					value={productName}
-					onChange={(e) => setProductName(e.target.value)}
-					type="text"
-					placeholder="ما المنتج الذى تريده"
-					className="flex-1 sm:max-w-2xl px-4 py-4 rounded-lg focus:ring-emerald-600
-						focus:outline-none focus:ring-3  bg-lime-50 text-lg"
-				/>
-			</div>
-			{/* ==Search Bar== */}
-			{/* The Products */}
-			<div className="grid grid-cols-2 lg:grid-cols-4 sm:grid-cols-3 gap-8 mt-9">
-				{filteredProducts.map((product) => {
+		<div className="p-6 bg-[#070d0a] mt-18 min-h-screen">
+			<div className="grid grid-cols-2 lg:grid-cols-4 sm:grid-cols-3 gap-8 ">
+				{filterdProducts.map((product) => {
 					const isInCart = cartIds.has(product.id);
 					return (
 						<div
@@ -63,7 +50,6 @@ export default function ProductsPage() {
 					);
 				})}
 			</div>
-			{/* == The Products == */}
 		</div>
 	);
 }

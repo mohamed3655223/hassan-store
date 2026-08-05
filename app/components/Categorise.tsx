@@ -3,7 +3,8 @@ import Link from "next/link";
 const categories = [
 	{
 		name: "Gym Keychains",
-		href: "/ProductsPage?category=gym-keychains",
+		slug: "gym-keychains",
+		href: "/CategoryProducts?category=gym-keychains",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +23,8 @@ const categories = [
 	},
 	{
 		name: "Butterfly Knife",
-		href: "/ProductsPage?category=butterfly-knife",
+		slug: "butterfly-knife",
+		href: "/CategoryProducts?category=butterfly-knife",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +43,8 @@ const categories = [
 	},
 	{
 		name: "Packages",
-		href: "/ProductsPage?category=package",
+		slug: "package",
+		href: "/CategoryProducts?category=package",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +63,8 @@ const categories = [
 	},
 	{
 		name: "حامل المفاتيح",
-		href: "/ProductsPage?category=key-holders",
+		slug: "key-holders",
+		href: "/CategoryProducts?category=key-holders",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -78,27 +82,9 @@ const categories = [
 		),
 	},
 	{
-		name: "حامل مفاتيح مضيء",
-		href: "/ProductsPage?category=glowing-key-holders",
-		icon: (
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				strokeWidth={1.5}
-				stroke="currentColor"
-				className="size-8 animate-pulse text-amber-400">
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					d="M12 18v-3m0 0a3 3 0 1 0-3-3h6a3 3 0 0 0-3 3Zm0-3h.008v.008H12V12Zm0 6h.008v.008H12V18Zm-.625 2.25h1.25M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Z"
-				/>
-			</svg>
-		),
-	},
-	{
 		name: "سبنر (Spinner)",
-		href: "/ProductsPage?category=spinner",
+		slug: "spinner",
+		href: "/CategoryProducts?category=spinner",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +103,8 @@ const categories = [
 	},
 	{
 		name: "Keychain / ميداليات",
-		href: "/ProductsPage?category=keychain",
+		slug: "keychain",
+		href: "/CategoryProducts?category=keychain",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -135,27 +122,9 @@ const categories = [
 		),
 	},
 	{
-		name: "سبنر مضيء",
-		href: "/ProductsPage?category=glowing-spinner",
-		icon: (
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				strokeWidth={1.5}
-				stroke="currentColor"
-				className="size-8 text-cyan-400">
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					d="M9.813 15.904L9 21l8.982-8.997M14.187 8.096L15 3L6.018 11.997"
-				/>
-			</svg>
-		),
-	},
-	{
 		name: "Minions",
-		href: "/ProductsPage?category=minions",
+		slug: "minions",
+		href: "/CategoryProducts?category=minions",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
