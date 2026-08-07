@@ -1,11 +1,8 @@
 "use client";
 import products from "../products.json";
-import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
-import { useCart } from "../Contexts/cartContext";
+import ProductCard from "../components/ProductCard";
 export default function ProductsPage() {
-	const { addToCart, cartItems } = useCart();
 	const [productName, setProductName] = useState("");
 	const filteredProducts =
 		productName.trim() === ""
@@ -13,8 +10,6 @@ export default function ProductsPage() {
 			: products.filter((product) =>
 					product.title.includes(productName),
 				);
-	const cartIds = new Set(cartItems.map((item) => item.id));
-
 	return (
 		<div className="p-6 bg-[#070d0a]">
 			{/* Search Bar */}
@@ -32,37 +27,11 @@ export default function ProductsPage() {
 			{/* The Products */}
 			<div className="grid grid-cols-2 lg:grid-cols-4 sm:grid-cols-3 gap-8 mt-9">
 				{filteredProducts.map((product) => {
-					const isInCart = cartIds.has(product.id);
 					return (
-						<div
+						<ProductCard
 							key={product.id}
-							className="text-xl bg-emerald-50 text-gray-600 rounded-lg
-							border-3 border-emerald-100 hover:border-emerald-500 transition-colors
-							duration-200">
-							<Link href={`/ProductDetailPage/${product.id}`}>
-								<Image
-									src={product.image}
-									alt="product-image"
-									width={300}
-									height={300}
-									className="w-auto sm:w-full lg:w-full"
-								/>
-								<div className="p-2 sm:p-4">
-									<h2 className="overflow-hidden truncate font-bold">
-										{product.title}
-									</h2>
-									<h3 className="mt-2">{`السعر : ${product.price} جنيه`}</h3>
-								</div>
-							</Link>
-							<div className="flex justify-center mb-1">
-								<button
-									className={`${isInCart ? "bg-green-600" : "bg-gray-600"} text-amber-50 p-2 sm:p-3 cursor-pointer
-									rounded-lg ${isInCart ? "" : "hover:bg-emerald-500"}`}
-									onClick={() => addToCart(product.id)}>
-									{isInCart ? "✔ موجود في السلة" : "أضف إلى سلة المشتريات"}
-								</button>
-							</div>
-						</div>
+							product={product}
+						/>
 					);
 				})}
 			</div>
