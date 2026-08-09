@@ -1,5 +1,5 @@
 "use client";
-
+import EmptyCart from "../components/EmptyCart";
 import { useCart } from "../Contexts/cartContext";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,27 +10,7 @@ export default function Cart() {
 	return (
 		<div className="bg-gray-600 mt-18 w-full text-white">
 			{cartItems.length === 0 ? (
-				<div className="flex flex-col items-center justify-center py-20">
-					<h2 className="text-3xl font-bold mb-5">🛒 سلة المشتريات فارغة</h2>
-
-					<Link
-						href="/ProductsPage"
-						className="
-									bg-emerald-600
-									hover:bg-emerald-700
-									text-white
-									font-bold
-									px-8
-									py-3
-									rounded-xl
-									transition-all
-									duration-200
-									shadow-md
-									hover:shadow-xl
-								">
-						ابدأ التسوق
-					</Link>
-				</div>
+			<EmptyCart />
 			) : (
 				<>
 					{/* Header */}
