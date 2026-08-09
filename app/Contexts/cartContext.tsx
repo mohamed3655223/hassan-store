@@ -1,12 +1,14 @@
 "use client";
 import { useState, useMemo, useContext } from "react";
 import AllProducts from "../products.json";
-import type { Product, CartItem } from "@/app/types/product";
+import type { CartItem } from "@/app/types/product";
 import { createContext } from "react";
 
 interface CartContextType {
 	cartItems: CartItem[];
 	totalPrice: number;
+	cartIds: Set<number>;
+	hasItems: boolean
 	addToCart: (wantedProductId: number) => void;
 	removeFromCart: (unWantedProductId: number) => void;
 	incrementQuantity: (itemId: number) => void;
@@ -21,6 +23,9 @@ export default function CartProvider({
 	children: React.ReactNode;
 }) {
 	const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+	const cartIds = new Set(cartItems.map((item) => item.id));
+	const hasItems = cartItems.length > 0; 
 
 	// Get The Total Price For All Products in The Cart
 	const totalPrice = useMemo(
@@ -87,10 +92,12 @@ export default function CartProvider({
 			value={{
 				cartItems,
 				totalPrice,
+				hasItems,
 				addToCart,
 				removeFromCart,
 				incrementQuantity,
 				decrementQuantity,
+				cartIds,
 			}}>
 			{children}
 		</CartContext.Provider>

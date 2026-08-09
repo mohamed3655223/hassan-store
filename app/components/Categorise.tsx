@@ -4,7 +4,6 @@ const categories = [
 	{
 		name: "Gym Keychains",
 		slug: "gym-keychains",
-		href: "/CategoryProducts?category=gym-keychains",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +23,6 @@ const categories = [
 	{
 		name: "Butterfly Knife",
 		slug: "butterfly-knife",
-		href: "/CategoryProducts?category=butterfly-knife",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +42,6 @@ const categories = [
 	{
 		name: "Packages",
 		slug: "package",
-		href: "/CategoryProducts?category=package",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +61,6 @@ const categories = [
 	{
 		name: "حامل المفاتيح",
 		slug: "key-holders",
-		href: "/CategoryProducts?category=key-holders",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +80,6 @@ const categories = [
 	{
 		name: "سبنر (Spinner)",
 		slug: "spinner",
-		href: "/CategoryProducts?category=spinner",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +99,6 @@ const categories = [
 	{
 		name: "Keychain / ميداليات",
 		slug: "keychain",
-		href: "/CategoryProducts?category=keychain",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +118,6 @@ const categories = [
 	{
 		name: "Minions",
 		slug: "minions",
-		href: "/CategoryProducts?category=minions",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -158,8 +151,8 @@ export default function Categories() {
 				<div className="w-full mx-auto grid grid-cols-2 gap-4 justify-items-center sm:grid-cols-2 lg:grid-cols-3">
 					{categories.map((category) => (
 						<Link
-							key={category.name}
-							href={category.href}
+							key={category.slug}
+							href={`/CategoryProducts?category=${category.slug}`}
 							className="group relative w-full max-w-[320px] sm:max-w-none
                                 flex flex-col items-center justify-center text-center
                                 sm:flex-row sm:items-center sm:text-right sm:gap-5

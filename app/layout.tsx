@@ -21,7 +21,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="ar" dir="rtl" data-theme="emerald">
+		<html lang="ar" dir="rtl">
 			<body className={`min-h-screen flex flex-col ${cairo.className}`}>
 				<CartProvider>
 					<Navbar />

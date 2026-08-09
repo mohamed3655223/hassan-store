@@ -3,8 +3,8 @@
 import { useCart } from "../Contexts/cartContext";
 
 export default function AddToCartButton({ productId }: { productId: number }) {
-	const { addToCart, cartItems } = useCart();
-	const isInCart = cartItems.some((item) => item.id === productId);
+	const { addToCart , cartIds } = useCart();
+	const isInCart = cartIds.has(productId);
 
 	return (
 		<button

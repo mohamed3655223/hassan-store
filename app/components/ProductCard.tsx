@@ -10,8 +10,7 @@ export default function ProductCard({
 	product,
 	showOldPrice,
 }: ProductCardProps) {
-	const { addToCart, cartItems } = useCart();
-	const cartIds = new Set(cartItems.map((item) => item.id));
+	const { addToCart, cartIds } = useCart();
 	const isInCart = cartIds.has(product.id);
 	return (
 		<div
@@ -22,8 +21,8 @@ export default function ProductCard({
 				<Image
 					src={product.image}
 					alt={product.title}
-					width={300}
-					height={300}
+					width={280}
+					height={280}
 					className="w-auto sm:w-full lg:w-full"
 				/>
 				<div className="pt-2 pr-2">

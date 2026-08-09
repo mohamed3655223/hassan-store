@@ -1,32 +1,13 @@
 import reviewsData from "../reviews.json";
 
-export interface Review {
-	id: string | number;
-	name: string;
-	avatarLetter: string;
-	rating: number; // 1–5
-	text?: string;
-	date?: string;
-}
-
-export interface ReviewsListProps {
-	reviews?: Review[];
-	title?: string;
-	description?: string;
-}
-
-export default function Reviews({
-	reviews = reviewsData as Review[],
-	title = "آراء العملاء",
-	description = "استكشف تجارب وآراء عملائنا في منتجاتنا الـ 3D.",
-}: ReviewsListProps) {
-	if (!reviews || reviews.length === 0) {
+export default function Reviews () {
+	if (reviewsData.length === 0) {
 		return (
 			<section className="bg-[#070d0a] py-12 sm:py-16">
 				<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 					<div className="text-right border-r-4 border-emerald-500 pr-4">
 						<h2 className="text-2xl font-black tracking-tight text-white sm:text-3xl">
-							{title}
+							آراء العملاء
 						</h2>
 						<p className="mt-2 text-sm text-gray-400">لا توجد آراء حالياً.</p>
 					</div>
@@ -40,16 +21,18 @@ export default function Reviews({
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 				<div className="text-right mb-10 border-r-4 border-emerald-500 pr-4">
 					<h2 className="text-2xl font-black tracking-tight text-white sm:text-3xl">
-						{title}
+						آراء العملاء
 					</h2>
-					<p className="mt-2 text-sm text-gray-400">{description}</p>
+					<p className="mt-2 text-sm text-gray-400">
+						استكشف تجارب وآراء عملائنا في منتجاتنا الـ 3D.
+					</p>
 				</div>
 
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-					{reviews.map((review) => {
+					{reviewsData.map((review) => {
 						const name = review.name.trim();
 						const letter = name.charAt(0).toUpperCase();
-						const rating = Math.max(0,Math.min(5, Math.round(review.rating)));
+						const rating = Math.max(0, Math.min(5, Math.round(review.rating)));
 
 						return (
 							<div
@@ -85,7 +68,7 @@ export default function Reviews({
 									</div>
 
 									<p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
-										{review.text || "لا يوجد تعليق مكتوب."}
+										{review.text}
 									</p>
 								</div>
 

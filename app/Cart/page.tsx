@@ -2,11 +2,11 @@
 
 import { useCart } from "../Contexts/cartContext";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Cart() {
 	const { cartItems, incrementQuantity, decrementQuantity, totalPrice } =
 		useCart();
-
 	return (
 		<div className="bg-gray-600 mt-18 w-full text-white">
 			{cartItems.length === 0 ? (
@@ -49,19 +49,19 @@ export default function Cart() {
 							className="grid grid-cols-[3fr_1fr_1fr] items-center border-b
 							border-gray-500 px-3 sm:px-5 lg:px-7 py-4">
 							{/* Product */}
-							<div className="flex items-center gap-4">
-								<img
-									src={item.image}
-									alt={item.title}
-									className="size-20 sm:size-26 lg:size-36 object-cover rounded"
-								/>
-
+							<div className="flex items-center gap-2">
+								<div className="relative size-20 sm:size-26 lg:size-36">
+									<Image
+										src={item.image}
+										alt={item.title}
+										fill
+										className="object-cover rounded"
+									/>
+								</div>
 								<h2>{item.title}</h2>
 							</div>
-
 							{/* Price */}
 							<h2 className="text-center">{item.price} جنيه</h2>
-
 							{/* Quantity */}
 							<div className="flex justify-center items-center gap-1 sm:gap-2 lg:gap-3">
 								<button
@@ -69,9 +69,7 @@ export default function Cart() {
 									className="bg-green-600 px-2 sm:px-3 sm:py-1 lg:px-4 lg:py-2 rounded font-bold cursor-pointer">
 									+
 								</button>
-
 								<span>{item.quantity}</span>
-
 								<button
 									onClick={() => decrementQuantity(item.id)}
 									className="bg-red-600 px-2 sm:px-3 sm:py-1 lg:px-4 lg:py-2 rounded font-bold cursor-pointer">
