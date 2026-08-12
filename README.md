@@ -33,7 +33,7 @@ The project currently works with local product data and simulated order submissi
 
 The original store was built using the Salla platform:
 
-[Original Store](YOUR_OLD_STORE_LINK)
+[Original Store](https://keyspinner.b3na.com/)
 
 ### Redeveloped Version
 

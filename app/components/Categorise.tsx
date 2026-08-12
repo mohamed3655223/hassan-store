@@ -152,7 +152,7 @@ export default function Categories() {
 					{categories.map((category) => (
 						<Link
 							key={category.slug}
-							href={`/CategoryProducts?category=${category.slug}`}
+							href={`/CategoryProductsContent?category=${category.slug}`}
 							className="group relative w-full max-w-[320px] sm:max-w-none
                                 flex flex-col items-center justify-center text-center
                                 sm:flex-row sm:items-center sm:text-right sm:gap-5
