@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
 
-export default function Confirmation() {
+function Confirmation() {
 	const searchParams = useSearchParams();
 	const orderId = searchParams.get("orderId");
 
@@ -54,7 +54,7 @@ export default function Confirmation() {
 }
 
 
-function confirmationSuspense() {
+export default function confirmationSuspense() {
 	return (
 		<Suspense
 			fallback={
