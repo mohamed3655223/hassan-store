@@ -39,7 +39,7 @@ The original store was built using the Salla platform:
 
 This project represents the redesigned and rebuilt frontend:
 
-[Live Demo](YOUR_LIVE_DEMO_LINK)
+[Live Demo](https://hassan-store-qegd.vercel.app/)
 
 The main objective was not simply to change the visual appearance, but to rebuild the frontend architecture into a codebase that can be maintained and extended independently.
 
