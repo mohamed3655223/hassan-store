@@ -30,13 +30,17 @@ export default function Confirmation() {
 				</p>
 
 				<div className="mt-8 border border-emerald-900 rounded-xl p-5 bg-[#111a15]">
-					<p className="text-sm text-gray-400 mb-2">رقم الطلب</p>
-
-					<p className="text-2xl tracking-widest font-bold text-emerald-300">
-						#{orderId}
-					</p>
+					<span className="font-bold text-gray-400">رقم الطلب</span>
+					{!orderId || orderId.length !== 6 ? (
+						<h2 className="mt-4 text-sm text-gray-400">
+							you should have an order , first
+						</h2>
+					) : (
+						<p className="text-2xl tracking-widest mt-4 font-bold text-emerald-300">
+							#{orderId}
+						</p>
+					)}
 				</div>
-
 				<Link
 					href="/"
 					className="inline-block mt-10 bg-emerald-600 hover:bg-emerald-700 transition-colors text-amber-50 font-bold px-8 py-3 rounded-lg">

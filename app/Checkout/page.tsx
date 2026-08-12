@@ -13,19 +13,14 @@ export default function Checkout() {
 		address: "",
 		notes: "",
 	});
-
 	const [errors, setErrors] = useState({
 		name: "",
 		phone: "",
 	});
-
 	const [hasSubmitted, setHasSubmitted] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
-
 	const { cartItems, totalPrice } = useCart();
-
 	const router = useRouter();
-
 	function updateError(field: keyof typeof errors, message: string) {
 		setErrors((prevErrors) => ({
 			...prevErrors,
@@ -58,13 +53,10 @@ export default function Checkout() {
 			...prevCustomerData,
 			[field]: value,
 		}));
-
 		if (!hasSubmitted) return;
-
 		if (field === "name") {
 			validateName(value);
 		}
-
 		if (field === "phone") {
 			validatePhone(value);
 		}
@@ -72,23 +64,17 @@ export default function Checkout() {
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
-
 		setHasSubmitted(true);
-
 		const isNameValid = validateName(customerData.name);
 		const isPhoneValid = validatePhone(customerData.phone);
-
 		if (isNameValid && isPhoneValid) {
 			setIsSubmitting(true);
-
-			const orderId = Date.now().toString().slice(-6);
-
+			const orderId = crypto.randomUUID().slice(-6);
 			router.push(`/Confirmation?orderId=${orderId}`);
 		}
 	}
 
 	const rowStyle = "grid grid-cols-[90px_1fr] items-start gap-2 mb-6";
-
 	const inputStyle =
 		"border rounded-md p-2 border-emerald-500 focus:outline-2 focus:outline-emerald-500 w-full";
 
@@ -99,7 +85,6 @@ export default function Checkout() {
 			) : (
 				<div className="flex flex-col gap-10 lg:grid lg:grid-cols-2">
 					{/* Form For Customer Data */}
-
 					<div>
 						<form
 							className="pt-5 font-bold text-[#fef3c7]"
@@ -107,7 +92,6 @@ export default function Checkout() {
 							onSubmit={handleSubmit}>
 							<div className={rowStyle}>
 								<label htmlFor="name">الاسم :</label>
-
 								<div>
 									<input
 										type="text"
@@ -117,16 +101,13 @@ export default function Checkout() {
 										value={customerData.name}
 										onChange={(e) => handleInputChange("name", e.target.value)}
 									/>
-
 									<p className="mt-1 mb-0 text-sm text-red-500">
 										{errors.name}
 									</p>
 								</div>
 							</div>
-
 							<div className={rowStyle}>
 								<label htmlFor="tel">الهاتف :</label>
-
 								<div>
 									<input
 										type="tel"
@@ -136,16 +117,13 @@ export default function Checkout() {
 										value={customerData.phone}
 										onChange={(e) => handleInputChange("phone", e.target.value)}
 									/>
-
 									<p className="mt-1 mb-0 text-sm text-red-500">
 										{errors.phone}
 									</p>
 								</div>
 							</div>
-
 							<div className={rowStyle}>
 								<label htmlFor="gov">المحافظة :</label>
-
 								<div>
 									<input
 										required
@@ -160,10 +138,8 @@ export default function Checkout() {
 									/>
 								</div>
 							</div>
-
 							<div className={rowStyle}>
 								<label htmlFor="city">المدينة :</label>
-
 								<div>
 									<input
 										required
@@ -176,10 +152,8 @@ export default function Checkout() {
 									/>
 								</div>
 							</div>
-
 							<div className={rowStyle}>
 								<label htmlFor="address">العنوان :</label>
-
 								<div>
 									<input
 										required
@@ -194,10 +168,8 @@ export default function Checkout() {
 									/>
 								</div>
 							</div>
-
 							<div className={rowStyle}>
 								<label htmlFor="notes">ملاحظات :</label>
-
 								<div>
 									<textarea
 										id="notes"
@@ -214,26 +186,22 @@ export default function Checkout() {
 					</div>
 
 					{/* Summary Of The Order */}
-
 					<div className="p-4 sm:p-8 lg:p-10">
 						<h1 className="text-center text-3xl font-extrabold text-[#fef3c7]">
 							ملخص الطلب
 						</h1>
-
 						<div className="pt-5">
 							{cartItems.map((item) => (
 								<div
 									key={item.id}
 									className="flex items-center justify-between border-b border-emerald-900 py-5">
 									<h2 className="font-semibold text-[#fef3c7]">{item.title}</h2>
-
 									<span className="font-bold text-emerald-300">
 										× {item.quantity}
 									</span>
 								</div>
 							))}
 						</div>
-
 						<div className="p-10">
 							<p className="text-center text-2xl font-bold text-[#fef3c7]">
 								الإجمالي&nbsp;&nbsp;:&nbsp;&nbsp;
@@ -243,7 +211,6 @@ export default function Checkout() {
 					</div>
 
 					{/* Submit Button */}
-
 					<div className="flex justify-center mt-8 lg:col-span-2">
 						<button
 							type="submit"
@@ -260,6 +227,7 @@ export default function Checkout() {
 								hover:bg-emerald-700
 								disabled:cursor-not-allowed
 								disabled:bg-emerald-700
+								cursor-pointer
 							">
 							{isSubmitting ? (
 								<>
