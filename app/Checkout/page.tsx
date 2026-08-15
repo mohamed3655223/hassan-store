@@ -71,6 +71,18 @@ export default function Checkout() {
 			setIsSubmitting(true);
 			const orderId = crypto.randomUUID().slice(-6);
 			router.push(`/Confirmation?orderId=${orderId}`);
+		} else {
+			if (!isPhoneValid) {
+				document.getElementById("tel")?.scrollIntoView({
+					behavior: "smooth",
+					block: "center",
+				});
+			} else if (!isNameValid) {
+				document.getElementById("name")?.scrollIntoView({
+					behavior: "smooth",
+					block: "center",
+				});
+			}
 		}
 	}
 
