@@ -20,7 +20,7 @@ export default function ProductsPage() {
 					type="text"
 					placeholder="ما المنتج الذى تريده"
 					className="flex-1 sm:max-w-2xl px-4 py-4 rounded-lg focus:ring-emerald-600
-						focus:outline-none focus:ring-3  bg-lime-50 text-lg"
+						focus:outline-none focus:ring-3 bg-lime-50 text-lg text-black"
 				/>
 			</div>
 			{/* ==Search Bar== */}
